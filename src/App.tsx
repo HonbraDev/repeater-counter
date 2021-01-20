@@ -114,7 +114,12 @@ function App() {
     // ok boomer w0w4n
     var count = prompt("Repeaters", repeaterCount.toString());
 
-    if (count == null || count === "" || isNaN(parseInt(count))) {
+    if (
+      count == null ||
+      count === "" ||
+      isNaN(parseInt(count)) ||
+      parseInt(count) < 1
+    ) {
     } else {
       setRepeaterCount(parseInt(count));
     }
