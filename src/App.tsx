@@ -9,6 +9,7 @@ import {
   Grid,
 } from "@material-ui/core";
 import { makeStyles, createStyles } from "@material-ui/core/styles";
+import { ArrowUpward, ArrowDownward, ImportExport } from "@material-ui/icons";
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -26,6 +27,9 @@ const useStyles = makeStyles(() =>
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
+    },
+    madeBy: {
+      margin: 10,
     },
   })
 );
@@ -50,8 +54,15 @@ function App() {
           </Grid>
           <Grid item sm={3} xs={6} className={classes.flexCenter}>
             <ButtonGroup variant="contained">
-              <Button onClick={() => setCount(1)}>△</Button>
-              <Button onClick={() => setCount(-1)}>▽</Button>
+              <Button onClick={() => addCount(1)}>
+                <ArrowUpward />
+              </Button>
+              <Button onClick={() => addCount(-1)}>
+                <ArrowDownward />
+              </Button>
+              <Button onClick={textBoxInput}>
+                <ImportExport />
+              </Button>
             </ButtonGroup>
           </Grid>
         </Grid>
@@ -59,32 +70,54 @@ function App() {
         <Grid container spacing={2}>
           <Grid item className={classes.bottomSection}>
             <Typography variant="body1">Final ingredients</Typography>
-            <Typography variant="body1">{repeaterCount * 3} stone</Typography>
             <Typography variant="body1">
-              {repeaterCount * 2} redstone torches
+              {prettyStacks(repeaterCount * 3)} stone
             </Typography>
             <Typography variant="body1">
-              {repeaterCount} redstone dust
+              {prettyStacks(repeaterCount * 2)} redstone torches
+            </Typography>
+            <Typography variant="body1">
+              {prettyStacks(repeaterCount * 1)} redstone dust
             </Typography>
           </Grid>
           <Grid item className={classes.bottomSection}>
             <Typography variant="body1">Raw ingredients</Typography>
-            <Typography variant="body1">{repeaterCount * 3} stone</Typography>
             <Typography variant="body1">
-              {repeaterCount * 1} wooden plank{repeaterCount > 1 ? "s" : ""}
+              {prettyStacks(repeaterCount * 3)} stone
             </Typography>
             <Typography variant="body1">
-              {repeaterCount * 3} redstone dust
+              {prettyStacks(repeaterCount * 1)} wooden plank
+              {repeaterCount > 1 ? "s" : ""}
+            </Typography>
+            <Typography variant="body1">
+              {prettyStacks(repeaterCount * 3)} redstone dust
             </Typography>
           </Grid>
         </Grid>
       </Card>
-      <Typography variant="body1">Made by Honbra</Typography>
+      <Typography variant="body1" className={classes.madeBy}>
+        Made by Honbra <br /> Special thanks to Tokfrans03 for the item displays
+      </Typography>
     </div>
   );
 
-  function setCount(i: number) {
+  function addCount(i: number) {
     if (repeaterCount + i > 0) setRepeaterCount(repeaterCount + i);
+  }
+
+  function prettyStacks(i: number) {
+    // thanks Tokfrans03
+    return `${Math.floor(i / 64)} x64 + ${i % 64}`;
+  }
+
+  function textBoxInput() {
+    // ok boomer w0w4n
+    var count = prompt("Repeaters", repeaterCount.toString());
+
+    if (count == null || count === "" || isNaN(parseInt(count))) {
+    } else {
+      setRepeaterCount(parseInt(count));
+    }
   }
 }
 
