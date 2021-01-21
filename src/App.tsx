@@ -112,7 +112,7 @@ function App() {
                   {prettyStacks(repeaterCount * 3)} stone
                 </Typography>
                 <Typography variant="body1">
-                  {prettyStacks(repeaterCount * 1)} wooden plank
+                  {prettyStacks(Math.ceil(repeaterCount / 2) * 2)} wooden plank
                   {repeaterCount > 1 ? "s" : ""}
                 </Typography>
                 <Typography variant="body1">
