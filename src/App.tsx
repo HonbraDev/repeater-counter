@@ -7,7 +7,6 @@ import {
   Card,
   Divider,
   Grid,
-  Switch,
   ThemeProvider,
   Container,
   CssBaseline,
@@ -50,21 +49,17 @@ const useStyles = makeStyles(() =>
 function App() {
   const [repeaterCount, setRepeaterCount] = useState(1);
   const classes = useStyles();
-  const [darkState, setDarkState] = useState(true);
+  const [darkState] = useState(true);
   const palletType = darkState ? "dark" : "light";
   const darkTheme = createMuiTheme({
     palette: {
       type: palletType,
     },
   });
-  const handleThemeChange = () => {
-    setDarkState(!darkState);
-  };
 
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-
       <Container>
         <div className="App">
           <Card className={classes.card}>
@@ -126,16 +121,6 @@ function App() {
               *wooden planks are rounded up
             </Typography>
           </Card>
-          <div className={classes.darkMode}>
-            <Typography variant="body1">
-              <label htmlFor="darkmode">Dark mode</label>
-              <Switch
-                checked={darkState}
-                onChange={handleThemeChange}
-                id="darkmode"
-              />
-            </Typography>
-          </div>
           <Typography variant="body1" className={classes.madeBy}>
             Made by Honbra <br /> Special thanks to Tokfrans03 for the item
             displays and StayWithMeSenpai for the rounding.
