@@ -10,6 +10,7 @@ import {
   Switch,
   ThemeProvider,
   Container,
+  CssBaseline,
 } from "@material-ui/core";
 import {
   makeStyles,
@@ -39,7 +40,8 @@ const useStyles = makeStyles(() =>
       margin: 10,
     },
     darkMode: {
-      margin: 10,
+      marginLeft: 10,
+      marginTop: 10,
     },
   })
 );
@@ -60,6 +62,8 @@ function App() {
 
   return (
     <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+
       <Container>
         <div className="App">
           <Card className={classes.card}>
@@ -118,12 +122,14 @@ function App() {
             </Grid>
           </Card>
           <div className={classes.darkMode}>
-            <label htmlFor="darkmode">Dark mode (broken)</label>
-            <Switch
-              checked={darkState}
-              onChange={handleThemeChange}
-              id="darkmode"
-            />
+            <Typography variant="body1">
+              <label htmlFor="darkmode">Dark mode</label>
+              <Switch
+                checked={darkState}
+                onChange={handleThemeChange}
+                id="darkmode"
+              />
+            </Typography>
           </div>
           <Typography variant="body1" className={classes.madeBy}>
             Made by Honbra <br /> Special thanks to Tokfrans03 for the item
