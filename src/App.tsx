@@ -43,6 +43,7 @@ const useStyles = makeStyles(() =>
       marginLeft: 10,
       marginTop: 10,
     },
+    planksNote: { textAlign: "center" },
   })
 );
 
@@ -112,13 +113,18 @@ function App() {
                   {prettyStacks(repeaterCount * 3)} stone
                 </Typography>
                 <Typography variant="body1">
-                  {prettyStacks(Math.ceil(repeaterCount / 2) * 2)} wooden planks
+                  {prettyStacks(Math.ceil(repeaterCount / 2) * 2)} wooden
+                  planks*
                 </Typography>
                 <Typography variant="body1">
                   {prettyStacks(repeaterCount * 3)} redstone dust
                 </Typography>
               </Grid>
             </Grid>
+            <Divider className={classes.divider} />
+            <Typography variant="body1" className={classes.planksNote}>
+              *wooden planks are rounded up
+            </Typography>
           </Card>
           <div className={classes.darkMode}>
             <Typography variant="body1">
@@ -132,7 +138,7 @@ function App() {
           </div>
           <Typography variant="body1" className={classes.madeBy}>
             Made by Honbra <br /> Special thanks to Tokfrans03 for the item
-            displays
+            displays and StayWithMeSenpai for the rounding.
           </Typography>
         </div>
       </Container>
