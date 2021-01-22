@@ -10,6 +10,7 @@ import {
   ThemeProvider,
   Container,
   CssBaseline,
+  Link,
 } from "@material-ui/core";
 import {
   makeStyles,
@@ -122,8 +123,11 @@ function App() {
             </Typography>
           </Card>
           <Typography variant="body1" className={classes.madeBy}>
-            Made by Honbra <br /> Special thanks to Tokfrans03 for the item
-            displays and StayWithMeSenpai for the rounding.
+            Made by Honbra <br /> Special thanks to the{" "}
+            <Link href="https://github.com/HonbraDev/repeater-counter/graphs/contributors/">
+              contributors
+            </Link>
+            .
           </Typography>
         </div>
       </Container>
@@ -140,7 +144,7 @@ function App() {
   }
 
   function textBoxInput() {
-    // ok boomer w0w4n
+    // ok boomer V0W4N
     var count = prompt("Repeaters", repeaterCount.toString());
 
     if (
