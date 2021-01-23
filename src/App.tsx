@@ -17,7 +17,8 @@ import {
   createStyles,
   createMuiTheme,
 } from "@material-ui/core/styles";
-import { ArrowUpward, ArrowDownward, ImportExport } from "@material-ui/icons";
+import { ArrowUpward, ArrowDownward, ImportExport, FileCopy, GetApp } from "@material-ui/icons";
+import Tooltip from '@material-ui/core/Tooltip';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -103,12 +104,16 @@ function App() {
                   {prettyStacks(repeaterCount * 1)} redstone dust
                 </Typography>
                 <ButtonGroup variant="contained">
-                  <Button onClick={() => save(true)}>
-                    Save
-                  </Button>
-                  <Button onClick={() => copy(true)}>
-                    Copy
-                  </Button>
+                  <Tooltip title="Download as file">
+                    <Button onClick={() => save(true)}>
+                      <GetApp />
+                    </Button>
+                  </Tooltip>
+                  <Tooltip title="Copy to Clipboard">
+                    <Button onClick={() => copy(true)}>
+                      <FileCopy />
+                    </Button>
+                  </Tooltip>
                 </ButtonGroup>
               </Grid>
               <Grid item className={classes.bottomSection}>
@@ -124,12 +129,16 @@ function App() {
                   {prettyStacks(repeaterCount * 3)} redstone dust
                 </Typography>
                 <ButtonGroup variant="contained">
-                  <Button onClick={() => save(false)}>
-                    Save
-                  </Button>
-                  <Button onClick={() => copy(false)}>
-                    Copy
-                  </Button>
+                  <Tooltip title="Download as file">
+                    <Button onClick={() => save(false)}>
+                      <GetApp />
+                    </Button>
+                  </Tooltip>
+                  <Tooltip title="Copy to Clipboard">
+                    <Button onClick={() => copy(false)}>
+                      <FileCopy />
+                    </Button>
+                  </Tooltip>
                 </ButtonGroup>
               </Grid>
             </Grid>
